@@ -1,4 +1,4 @@
-# Prompt Injection Detection and Localization: A Cross-Lingual Deep Learning Approach
+# Deep Learning for Prompt Injection Detection and Analysis
 
 ## Project Description
 
