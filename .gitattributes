@@ -1,2 +1,0 @@
-# Preserve dataset bytes so the recorded SHA-256 hashes survive checkout.
-data/*.json -text
