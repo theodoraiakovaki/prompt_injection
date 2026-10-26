@@ -1,15 +1,35 @@
-# Prompt injection detection
+# Project Overview
 
-Explore the [PromptShield dataset](https://huggingface.co/datasets/hendzh/PromptShield) and build a first prompt injection detector in **[promptshield_analysis.ipynb](promptshield_analysis.ipynb)**.
+This project investigates prompt injection detection using deep learning and machine learning techniques. Using the PromptShield dataset, we aim to distinguish malicious prompts from benign ones and evaluate the effectiveness of different detection approaches.
 
-## Use the notebook
+## Main Objectives
 
-1. Open the notebook in VS Code with the Jupyter extension, or in JupyterLab.
-2. Select a Python kernel (the existing `.venv` environment is ready to use).
-3. Run the cells from top to bottom. The first code cell installs the analysis packages.
+- **Develop a prompt injection detection system** that classifies prompts as benign or malicious.
+- **Compare supervised and unsupervised approaches** to investigate their effectiveness in detecting prompt injection attacks.
+- **Evaluate model performance** using appropriate metrics, such as precision, recall, F1-score, and confusion matrices.
+- **Investigate the limitations of each approach**, particularly the challenges of detecting malicious prompts when labeled training data are unavailable.
+- **Explore a potential extension**, either identifying the specific text spans responsible for prompt injection attacks (localization) or evaluating cross-lingual generalization by testing detection on Greek prompts.
 
-The notebook contains local data loading, data preview, class balance, length analysis, duplicate and split-overlap checks, plots, TF-IDF/logistic regression baseline, validation metrics, and findings. It is self-contained and does not import project scripts.
+## Dataset
 
-The notebook reads `train.json`, `validation.json`, and `test.json` directly from the existing `data/` folder. Run it from the repository root, or set `DATA_DIR` to your data folder. Data loading requires no internet access. Results, tables, and plots appear directly in notebook cells. Test data is inspected for the audit; test model evaluation is reserved for the final experiment.
+We plan to use the [PromptShield dataset](https://huggingface.co/datasets/hendzh/PromptShield), which contains prompts labeled as benign or malicious. The dataset will be examined and preprocessed before being used for model development and evaluation.
 
-The project aims to compare supervised and unsupervised detection. Unsupervised methods, attack localization, and Greek evaluation are potential next steps.
+## Methodology
+
+The project will investigate two main approaches:
+
+- **Supervised learning:** Train a classification model using labeled examples to distinguish benign prompts from prompt injection attacks.
+- **Unsupervised learning:** Explore anomaly detection or clustering techniques to investigate whether potentially malicious prompts can be identified without using labels during training.
+
+Both approaches will be evaluated using a consistent experimental setup, with results compared to understand their strengths and limitations.
+
+## Potential Extensions
+
+Depending on feasibility and data availability, we may extend the project in one of two directions:
+
+- **Prompt injection localization:** Identify the specific words or text spans that contain injection attempts, rather than only classifying the entire prompt.
+- **Cross-lingual generalization:** Investigate whether a detector trained on English prompts can identify prompt injection attacks in Greek.
+
+## Expected Outcomes
+
+The project aims to provide an experimental comparison of supervised and unsupervised approaches to prompt injection detection, highlighting their performance, limitations, and suitability for scenarios with limited labeled data. The optional extension may provide further insight into either attack localization or cross-lingual robustness.
