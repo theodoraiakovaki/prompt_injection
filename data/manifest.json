@@ -1,0 +1,32 @@
+{
+  "dataset": "hendzh/PromptShield",
+  "revision": "a5234cb1f5cdb256600cab64b8c961195b5e8404",
+  "downloaded_at": "2026-10-26T20:14:34.370530+00:00",
+  "label_mapping": {
+    "0": "benign",
+    "1": "injection"
+  },
+  "files": {
+    "train.json": {
+      "url": "https://huggingface.co/datasets/hendzh/PromptShield/resolve/a5234cb1f5cdb256600cab64b8c961195b5e8404/train.json",
+      "rows": 18909,
+      "sha256": "aa33c3ffcc27bd07c0a233b52f1b8c3cbdb30606ce2412da06a88b5290cdc7b6"
+    },
+    "validation.json": {
+      "url": "https://huggingface.co/datasets/hendzh/PromptShield/resolve/a5234cb1f5cdb256600cab64b8c961195b5e8404/validation.json",
+      "rows": 1000,
+      "sha256": "1d93d90d57d3ef44ed0c546fbc04d66324436c5fcd32e7fcb940ceed270fbe77"
+    },
+    "test.json": {
+      "url": "https://huggingface.co/datasets/hendzh/PromptShield/resolve/a5234cb1f5cdb256600cab64b8c961195b5e8404/test.json",
+      "rows": 23516,
+      "sha256": "d5b39f08718576720df788fe4cd482f608717cafabd68c4952046f1277464778",
+      "original_sha256": "526207c2485829d9961407011d7f4cd929569e7f285dc8396b3f385e0608bc70",
+      "redactions": {
+        "OPENAI": 1,
+        "HUGGINGFACE": 1
+      },
+      "note": "Two token-shaped strings replaced with same-character-length placeholders for safe publication. Original retained locally in ignored data/originals/test.json."
+    }
+  }
+}

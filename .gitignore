@@ -12,7 +12,13 @@ env/
 .ipynb_checkpoints/
 
 # Local data and generated outputs
-/data/
+/data/*
+!/data/train.json
+!/data/validation.json
+!/data/test.json
+!/data/manifest.json
+!/data/README.md
+!/data/LICENSE
 /datasets/
 /artifacts/
 /checkpoints/
