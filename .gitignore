@@ -9,7 +9,7 @@ __pycache__/
 /gpu_test/results/
 
 # CNN experiment outputs; notebooks and shared experiment code remain tracked.
-/artifacts/cnn_experiments/
+/cnn/artifacts/
 .ipynb_checkpoints/
 
 # Local unredacted dataset backup

@@ -1,6 +1,6 @@
 """Leakage-aware CNN experiments shared by the tuning and analysis notebooks.
 
-Importing this module never starts training. The original cnn.py is unchanged.
+Importing this module never starts training. Shared datasets remain at repository root.
 """
 
 from __future__ import annotations
@@ -32,7 +32,9 @@ from torch import nn
 from torch.utils.data import DataLoader, TensorDataset
 
 
-ROOT = Path(__file__).resolve().parent
+CNN_DIR = Path(__file__).resolve().parent
+ROOT = CNN_DIR.parent
+ARTIFACTS_DIR = CNN_DIR / "artifacts"
 PAD_TOKEN, UNK_TOKEN = "<PAD>", "<UNK>"
 PREPROCESSING = {
     "tokenizer": "lowercase_regex_words_and_punctuation_v1",
@@ -449,7 +451,7 @@ def load_checkpoint(path, device="cpu"):
             raise ValueError("Checkpoint preprocessing differs from the fixed experiment preprocessing")
         config, state = CNNConfig(**checkpoint["config"]), checkpoint["model_state_dict"]
     else:
-        # Read the original one-layer checkpoint without changing cnn.py globals.
+        # Read a historical one-layer checkpoint without the retired training script.
         original = checkpoint["config"]
         if original["max_sequence_length"] != PREPROCESSING["max_sequence_length"]:
             raise ValueError("Original checkpoint uses a different sequence length")
@@ -572,6 +574,12 @@ def run_search(run_dir, data_dir=ROOT / "data", settings=None, configurations=No
 def refit_selected(run_dir, data_dir=ROOT / "data", device="auto", progress=print):
     """Separate, reviewable step after completing and inspecting the CV search."""
     search = load_search(run_dir, require_selected=False)
+    if search["selected"] is not None:
+        # Loading an already verified checkpoint never needs its original runtime
+        # or training source. Actual retraining retains the strict checks below.
+        if progress:
+            progress("Loaded the verified selected checkpoint; no retraining needed")
+        return search
     manifest = search["manifest"]
     device, run_dir = resolve_device(device), Path(run_dir).resolve()
     if runtime_info(device) != manifest["runtime"] or sha256(__file__) != manifest["source_sha256"]:
@@ -718,12 +726,17 @@ def prepare_validation_analysis(run_dir, data_dir=ROOT / "data", device="auto", 
     if set(row["label"] for row, keep in zip(validation, clean_mask, strict=True) if keep) != {0, 1}:
         raise ValueError("Overlap-free validation must contain both classes")
     analysis_dir = run_dir / "analysis"
+    historical_report = analysis_dir / "validation_report.json"
+    if historical_report.exists() and read_json(historical_report)["metadata"]["source_sha256"] != sha256(__file__):
+        # Preserve published results and frozen thresholds after a code/layout change.
+        # A fresh evaluation reuses the trained checkpoint in a separate directory.
+        analysis_dir = run_dir / ("analysis_" + sha256(__file__)[:12])
     analysis_dir.mkdir(parents=True, exist_ok=True)
     model_specs = {
         "selected_cnn": {"kind": "cnn", "path": str(run_dir / "selected.pt"),
                          "sha256": sha256(run_dir / "selected.pt")},
     }
-    legacy_checkpoint = Path(legacy_checkpoint) if legacy_checkpoint is not None else ROOT / "artifacts" / "cnn_v1_seed42.pt"
+    legacy_checkpoint = Path(legacy_checkpoint) if legacy_checkpoint is not None else ARTIFACTS_DIR / "legacy" / "cnn_v1_seed42.pt"
     if legacy_checkpoint.is_file():
         model_specs["existing_cnn"] = {"kind": "cnn", "path": str(legacy_checkpoint.resolve()),
                                         "sha256": sha256(legacy_checkpoint)}

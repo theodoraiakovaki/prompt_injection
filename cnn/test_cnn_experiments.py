@@ -10,8 +10,10 @@ from unittest.mock import patch
 import numpy as np
 import torch
 
-import cnn
-import cnn_experiments as experiments
+if __package__:
+    from . import cnn_experiments as experiments
+else:
+    import cnn_experiments as experiments
 
 
 class CNNExperimentTests(unittest.TestCase):
@@ -57,19 +59,18 @@ class CNNExperimentTests(unittest.TestCase):
         self.assertEqual(vocabulary[experiments.PAD_TOKEN], 0)
         self.assertEqual(vocabulary[experiments.UNK_TOKEN], 1)
 
-    def test_tokenizer_and_baseline_forward_match_original(self):
+    def test_fixed_tokenizer_and_reserved_ids(self):
         texts = ["Do NOT remove <ROLE>: system!", "\nQuoted text, 123_abc."]
-        for text in texts:
-            self.assertEqual(experiments.tokenize(text), cnn.tokenize(text))
+        expected = [
+            ["do", "not", "remove", "<", "role", ">", ":", "system", "!"],
+            ["quoted", "text", ",", "123_abc", "."],
+        ]
+        self.assertEqual([experiments.tokenize(text) for text in texts], expected)
         vocabulary = experiments.build_vocabulary(texts)
-        self.assertEqual(vocabulary, cnn.build_vocabulary([cnn.tokenize(text) for text in texts]))
-        original = cnn.TextCNN(vocabulary).eval()
-        model = experiments.ExperimentCNN(vocabulary, experiments.CNNConfig()).eval()
-        state = {key.replace("convolution.", "convolutions.0."): value for key, value in original.state_dict().items()}
-        model.load_state_dict(state)
-        inputs = experiments.encode_texts(texts, vocabulary)
-        with torch.inference_mode():
-            torch.testing.assert_close(model(inputs), original(inputs), rtol=0, atol=0)
+        self.assertEqual(list(vocabulary), [experiments.PAD_TOKEN, experiments.UNK_TOKEN, *expected[0], *expected[1]])
+        inputs = experiments.encode_texts(["do unseenword"], vocabulary)
+        self.assertEqual(inputs.shape, (1, 1024))
+        self.assertEqual(inputs[0, :3].tolist(), [vocabulary["do"], 1, 0])
 
     def test_padding_masks_all_depths_and_short_prompts(self):
         vocabulary = {experiments.PAD_TOKEN: 0, experiments.UNK_TOKEN: 1, "word": 2}
@@ -103,8 +104,10 @@ class CNNExperimentTests(unittest.TestCase):
                 torch.testing.assert_close(model(inputs), restored(inputs), rtol=0, atol=0)
             self.assertEqual(restored_vocabulary, vocabulary)
             self.assertEqual(restored_config, config)
-            original = cnn.TextCNN(vocabulary).eval()
-            torch.save({"model_state_dict": original.state_dict(), "vocabulary": vocabulary,
+            original = experiments.ExperimentCNN(vocabulary, experiments.CNNConfig()).eval()
+            legacy_state = {key.replace("convolutions.0.", "convolution."): value
+                            for key, value in original.state_dict().items()}
+            torch.save({"model_state_dict": legacy_state, "vocabulary": vocabulary,
                         "config": {"embedding_dim": 64, "num_filters": 256, "kernel_size": 3,
                                    "max_sequence_length": 1024}}, path)
             restored, _, _, _ = experiments.load_checkpoint(path)
@@ -168,6 +171,9 @@ class CNNExperimentTests(unittest.TestCase):
             with patch.object(experiments, "fit_early_stopping", side_effect=AssertionError("Unexpected retraining")):
                 experiments.run_search(run, directory, settings, device="cpu", progress=None)
             self.assertEqual(checkpoint_hash, experiments.sha256(run / "selected.pt"))
+            with patch.object(experiments, "runtime_info", side_effect=AssertionError("Cached checkpoint needs no training runtime")):
+                cached = experiments.refit_selected(run, directory, "cpu", progress=None)
+            self.assertEqual(cached["selected"]["checkpoint_sha256"], checkpoint_hash)
             analysis = experiments.prepare_validation_analysis(run, directory, "cpu", legacy_checkpoint=directory / "absent.pt")
             self.assertEqual(analysis["metadata"]["removed_overlap_rows"], 1)
             self.assertEqual(set(analysis["scores"]), {"selected_cnn", "tfidf_logistic"})
@@ -179,6 +185,26 @@ class CNNExperimentTests(unittest.TestCase):
             self.assertEqual(len(diagnostics), len(analysis["rows"]))
             with self.assertRaisesRegex(ValueError, "different recipe"):
                 experiments.run_search(run, directory, replace(settings, seed=43), device="cpu", progress=None)
+
+    def test_package_paths_and_historical_report_preservation(self):
+        self.assertEqual(experiments.ROOT / "cnn", experiments.CNN_DIR)
+        self.assertEqual(experiments.ARTIFACTS_DIR, experiments.CNN_DIR / "artifacts")
+        self.assertTrue((experiments.ROOT / "data" / "train.json").is_file())
+        with tempfile.TemporaryDirectory(dir=experiments.CNN_DIR) as temporary:
+            directory = Path(temporary)
+            self.write_fixture(directory)
+            run = directory / "run"
+            experiments.run_search(run, directory, experiments.SearchSettings(smoke=True),
+                                   device="cpu", progress=None)
+            old_analysis = run / "analysis"
+            old_analysis.mkdir()
+            historical = {"metadata": {"source_sha256": "historical-source"}, "reports": []}
+            experiments.write_json(old_analysis / "validation_report.json", historical)
+            historical_hash = experiments.sha256(old_analysis / "validation_report.json")
+            analysis = experiments.prepare_validation_analysis(run, directory, "cpu", directory / "absent.pt")
+            self.assertNotEqual(Path(analysis["analysis_dir"]), old_analysis)
+            self.assertEqual(experiments.sha256(old_analysis / "validation_report.json"), historical_hash)
+            self.assertTrue(experiments.freeze_analysis(analysis).is_file())
 
     def test_frozen_test_applies_stored_thresholds_and_resumes(self):
         with tempfile.TemporaryDirectory(dir=experiments.ROOT) as temporary:
