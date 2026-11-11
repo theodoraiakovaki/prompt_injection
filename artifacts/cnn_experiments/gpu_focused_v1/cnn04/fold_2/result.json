@@ -1,0 +1,146 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn04",
+  "fold": 2,
+  "seed": 44,
+  "best_epoch": 7,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2702793326648616,
+      "train_accuracy": 0.8785808726311151,
+      "early_stopping_loss": 0.13887583476695017,
+      "early_stopping_macro_f1": 0.9444547393447782
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.14065107477403901,
+      "train_accuracy": 0.9423387689143529,
+      "early_stopping_loss": 0.11022514983351783,
+      "early_stopping_macro_f1": 0.9557040375478535
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.10858043996636078,
+      "train_accuracy": 0.9565888056412517,
+      "early_stopping_loss": 0.0826108791697364,
+      "early_stopping_macro_f1": 0.9676137855355234
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.08109347271279159,
+      "train_accuracy": 0.9688555898339944,
+      "early_stopping_loss": 0.0786607264881487,
+      "early_stopping_macro_f1": 0.9675913600857504
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.0677949158830257,
+      "train_accuracy": 0.9743646246510944,
+      "early_stopping_loss": 0.07325896470064527,
+      "early_stopping_macro_f1": 0.972223970626803
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.054094068766782966,
+      "train_accuracy": 0.9814161892169825,
+      "early_stopping_loss": 0.05750540074180154,
+      "early_stopping_macro_f1": 0.9775280015376819
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.04420110041942473,
+      "train_accuracy": 0.9847950639048039,
+      "early_stopping_loss": 0.05634630250363498,
+      "early_stopping_macro_f1": 0.9775237599225421
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.04102455554725675,
+      "train_accuracy": 0.9860437784633466,
+      "early_stopping_loss": 0.06460611286812559,
+      "early_stopping_macro_f1": 0.9761974681951189
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.03327505673638158,
+      "train_accuracy": 0.9884677537828706,
+      "early_stopping_loss": 0.062206908252880576,
+      "early_stopping_macro_f1": 0.976856798847975
+    }
+  ],
+  "parameter_count": 1329665,
+  "training_seconds": 100.6669040999841,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3782,
+    "benign_count": 1892,
+    "injection_count": 1890,
+    "loss": 0.058633974213044775,
+    "accuracy": 0.9780539397144368,
+    "macro_f1": 0.9780538154345076,
+    "injection_precision": 0.9798194370685077,
+    "injection_recall": 0.9761904761904762,
+    "injection_f1": 0.9780015902464883,
+    "false_positive_rate": 0.0200845665961945,
+    "fpr_wilson_95": [
+      0.014667575957519541,
+      0.027446419624346994
+    ],
+    "roc_auc": 0.9978668187970513,
+    "average_precision": 0.9979158457973636,
+    "true_negatives": 1854,
+    "false_positives": 38,
+    "false_negatives": 45,
+    "true_positives": 1845,
+    "confusion_matrix": [
+      [
+        1854,
+        38
+      ],
+      [
+        45,
+        1845
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.976303317535545,
+        "recall": 0.9799154334038055,
+        "f1-score": 0.978106040622527,
+        "support": 1892.0
+      },
+      "injection": {
+        "precision": 0.9798194370685077,
+        "recall": 0.9761904761904762,
+        "f1-score": 0.9780015902464883,
+        "support": 1890.0
+      },
+      "accuracy": 0.9780539397144368,
+      "macro avg": {
+        "precision": 0.9780613773020264,
+        "recall": 0.9780529547971408,
+        "f1-score": 0.9780538154345076,
+        "support": 3782.0
+      },
+      "weighted avg": {
+        "precision": 0.9780604476035777,
+        "recall": 0.9780539397144368,
+        "f1-score": 0.9780538430522696,
+        "support": 3782.0
+      }
+    }
+  },
+  "checkpoint_sha256": "0f732956798b1968f6907a7b22bec84e125c6eb606487b78dadf3eeeea47ab01",
+  "predictions_sha256": "956c94909679b9c8174f7f31abf2cfc48ea1ef878ae3b2fa8923938bfc13108d"
+}

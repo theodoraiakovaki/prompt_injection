@@ -1,0 +1,139 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn07",
+  "fold": 4,
+  "seed": 46,
+  "best_epoch": 6,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.20254291389184026,
+      "train_accuracy": 0.9111943587483473,
+      "early_stopping_loss": 0.13420956802935452,
+      "early_stopping_macro_f1": 0.9372038168335799
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.1093338190112605,
+      "train_accuracy": 0.9559277214631996,
+      "early_stopping_loss": 0.0899900617933557,
+      "early_stopping_macro_f1": 0.9656299801492997
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.077092383651218,
+      "train_accuracy": 0.9697370354047304,
+      "early_stopping_loss": 0.06937797130217871,
+      "early_stopping_macro_f1": 0.974222676548258
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.05773367833160603,
+      "train_accuracy": 0.9776700455413545,
+      "early_stopping_loss": 0.06833374238297865,
+      "early_stopping_macro_f1": 0.9742217756468365
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.04133298641432745,
+      "train_accuracy": 0.9849419714999266,
+      "early_stopping_loss": 0.057606689277383875,
+      "early_stopping_macro_f1": 0.9762053708725921
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.032613101523493185,
+      "train_accuracy": 0.9889819303658,
+      "early_stopping_loss": 0.049158919123736974,
+      "early_stopping_macro_f1": 0.9808319452144081
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.03009052065410299,
+      "train_accuracy": 0.9892757455560452,
+      "early_stopping_loss": 0.06491759286852404,
+      "early_stopping_macro_f1": 0.974223217058886
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.032217851022743556,
+      "train_accuracy": 0.988761568973116,
+      "early_stopping_loss": 0.07124194427487555,
+      "early_stopping_macro_f1": 0.9768592260480644
+    }
+  ],
+  "parameter_count": 1526529,
+  "training_seconds": 192.21806950005703,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3782,
+    "benign_count": 1892,
+    "injection_count": 1890,
+    "loss": 0.05546342128112573,
+    "accuracy": 0.9793759915388683,
+    "macro_f1": 0.9793755243581855,
+    "injection_precision": 0.9834578441835645,
+    "injection_recall": 0.9751322751322752,
+    "injection_f1": 0.9792773645058448,
+    "false_positive_rate": 0.01638477801268499,
+    "fpr_wilson_95": [
+      0.011566772523130405,
+      0.02316263932423511
+    ],
+    "roc_auc": 0.9980337707081892,
+    "average_precision": 0.9981773898347249,
+    "true_negatives": 1861,
+    "false_positives": 31,
+    "false_negatives": 47,
+    "true_positives": 1843,
+    "confusion_matrix": [
+      [
+        1861,
+        31
+      ],
+      [
+        47,
+        1843
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.9753668763102725,
+        "recall": 0.983615221987315,
+        "f1-score": 0.9794736842105263,
+        "support": 1892.0
+      },
+      "injection": {
+        "precision": 0.9834578441835645,
+        "recall": 0.9751322751322752,
+        "f1-score": 0.9792773645058448,
+        "support": 1890.0
+      },
+      "accuracy": 0.9793759915388683,
+      "macro avg": {
+        "precision": 0.9794123602469185,
+        "recall": 0.9793737485597951,
+        "f1-score": 0.9793755243581855,
+        "support": 3782.0
+      },
+      "weighted avg": {
+        "precision": 0.9794102209111508,
+        "recall": 0.9793759915388683,
+        "f1-score": 0.9793755762671502,
+        "support": 3782.0
+      }
+    }
+  },
+  "checkpoint_sha256": "fb0e828880552da68d6aac304c45973b0cfb9b070bfe3480144c21536963269d",
+  "predictions_sha256": "df138236b71f2e07620a555f50114865213e6b1c7a8a50dcdb71ee16bbd4ef49"
+}

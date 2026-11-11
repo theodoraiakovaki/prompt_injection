@@ -1,0 +1,146 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn06",
+  "fold": 5,
+  "seed": 47,
+  "best_epoch": 7,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.258534836703436,
+      "train_accuracy": 0.8859346309217775,
+      "early_stopping_loss": 0.13642860896841075,
+      "early_stopping_macro_f1": 0.937124704673992
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.12612218669069478,
+      "train_accuracy": 0.9486595666544253,
+      "early_stopping_loss": 0.09991615241478392,
+      "early_stopping_macro_f1": 0.958337285330086
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.08154409383534783,
+      "train_accuracy": 0.9685640837311789,
+      "early_stopping_loss": 0.07735380821880408,
+      "early_stopping_macro_f1": 0.974222991848879
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.06297491149435773,
+      "train_accuracy": 0.9758354755784062,
+      "early_stopping_loss": 0.0842527751192224,
+      "early_stopping_macro_f1": 0.9656127947187518
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.04740399420288745,
+      "train_accuracy": 0.9845758354755784,
+      "early_stopping_loss": 0.06005237516451575,
+      "early_stopping_macro_f1": 0.9788498838001712
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.03679173945548821,
+      "train_accuracy": 0.9870730811604848,
+      "early_stopping_loss": 0.06083236075322201,
+      "early_stopping_macro_f1": 0.9795086139141156
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.03209612012508705,
+      "train_accuracy": 0.9895703268453911,
+      "early_stopping_loss": 0.054278906323975945,
+      "early_stopping_macro_f1": 0.9828154104765798
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.025327185516218643,
+      "train_accuracy": 0.991920675725303,
+      "early_stopping_loss": 0.05508014478493588,
+      "early_stopping_macro_f1": 0.9847981746801081
+    },
+    {
+      "epoch": 9,
+      "train_loss": 0.02279710533022826,
+      "train_accuracy": 0.9927286081527726,
+      "early_stopping_loss": 0.05852276271717562,
+      "early_stopping_macro_f1": 0.9788498838001712
+    }
+  ],
+  "parameter_count": 1362433,
+  "training_seconds": 114.01638479996473,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3781,
+    "benign_count": 1891,
+    "injection_count": 1890,
+    "loss": 0.05410253875700452,
+    "accuracy": 0.9817508595609628,
+    "macro_f1": 0.981750777863047,
+    "injection_precision": 0.9835369091874668,
+    "injection_recall": 0.9798941798941799,
+    "injection_f1": 0.9817121653856348,
+    "false_positive_rate": 0.01639344262295082,
+    "fpr_wilson_95": [
+      0.011572901641792904,
+      0.02317483860538976
+    ],
+    "roc_auc": 0.9978845771812457,
+    "average_precision": 0.9980043177580006,
+    "true_negatives": 1860,
+    "false_positives": 31,
+    "false_negatives": 38,
+    "true_positives": 1852,
+    "confusion_matrix": [
+      [
+        1860,
+        31
+      ],
+      [
+        38,
+        1852
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.9799789251844047,
+        "recall": 0.9836065573770492,
+        "f1-score": 0.9817893903404592,
+        "support": 1891.0
+      },
+      "injection": {
+        "precision": 0.9835369091874668,
+        "recall": 0.9798941798941799,
+        "f1-score": 0.9817121653856348,
+        "support": 1890.0
+      },
+      "accuracy": 0.9817508595609628,
+      "macro avg": {
+        "precision": 0.9817579171859357,
+        "recall": 0.9817503686356146,
+        "f1-score": 0.981750777863047,
+        "support": 3781.0
+      },
+      "weighted avg": {
+        "precision": 0.9817574466776042,
+        "recall": 0.9817508595609628,
+        "f1-score": 0.9817507880752865,
+        "support": 3781.0
+      }
+    }
+  },
+  "checkpoint_sha256": "33448f698d71b975409178dd8cc12e47cdd276a323aca29914520980d3c4eff4",
+  "predictions_sha256": "33b53d3889c069435a307f24f5cc24426f1982d046df8062fd1cd5279f4f8c82"
+}

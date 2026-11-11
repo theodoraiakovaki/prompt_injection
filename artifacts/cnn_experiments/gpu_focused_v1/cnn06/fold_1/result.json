@@ -1,0 +1,139 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn06",
+  "fold": 1,
+  "seed": 43,
+  "best_epoch": 6,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2540407154385662,
+      "train_accuracy": 0.8851182606140737,
+      "early_stopping_loss": 0.14132969362091247,
+      "early_stopping_macro_f1": 0.9385258417423468
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.12223492664946795,
+      "train_accuracy": 0.9490965182899956,
+      "early_stopping_loss": 0.10641226176386705,
+      "early_stopping_macro_f1": 0.9570058647244366
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.0833843480535667,
+      "train_accuracy": 0.9680475980608197,
+      "early_stopping_loss": 0.09235952513862428,
+      "early_stopping_macro_f1": 0.9616285374470914
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.059879592374521014,
+      "train_accuracy": 0.9778904069340385,
+      "early_stopping_loss": 0.08478200518367941,
+      "early_stopping_macro_f1": 0.9728967842538936
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.04388351807313592,
+      "train_accuracy": 0.9857499632731013,
+      "early_stopping_loss": 0.07783996868787502,
+      "early_stopping_macro_f1": 0.9689219870244237
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.03583808663224962,
+      "train_accuracy": 0.988541207580432,
+      "early_stopping_loss": 0.0662043297125343,
+      "early_stopping_macro_f1": 0.9808324811183973
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.033203582791495254,
+      "train_accuracy": 0.9884677537828706,
+      "early_stopping_loss": 0.08609109063634633,
+      "early_stopping_macro_f1": 0.9682538572367777
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.025379135061944193,
+      "train_accuracy": 0.9912589980902012,
+      "early_stopping_loss": 0.06937797470984676,
+      "early_stopping_macro_f1": 0.9748824814329402
+    }
+  ],
+  "parameter_count": 1362433,
+  "training_seconds": 102.37254130002111,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3782,
+    "benign_count": 1891,
+    "injection_count": 1891,
+    "loss": 0.058368615221009564,
+    "accuracy": 0.9767318878900053,
+    "macro_f1": 0.976731861862139,
+    "injection_precision": 0.9757255936675462,
+    "injection_recall": 0.9777895293495505,
+    "injection_f1": 0.97675647120972,
+    "false_positive_rate": 0.024325753569539928,
+    "fpr_wilson_95": [
+      0.018286778354923955,
+      0.03229342104621415
+    ],
+    "roc_auc": 0.9979974165806972,
+    "average_precision": 0.9981038459493412,
+    "true_negatives": 1845,
+    "false_positives": 46,
+    "false_negatives": 42,
+    "true_positives": 1849,
+    "confusion_matrix": [
+      [
+        1845,
+        46
+      ],
+      [
+        42,
+        1849
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.9777424483306836,
+        "recall": 0.9756742464304601,
+        "f1-score": 0.9767072525145579,
+        "support": 1891.0
+      },
+      "injection": {
+        "precision": 0.9757255936675462,
+        "recall": 0.9777895293495505,
+        "f1-score": 0.97675647120972,
+        "support": 1891.0
+      },
+      "accuracy": 0.9767318878900053,
+      "macro avg": {
+        "precision": 0.9767340209991149,
+        "recall": 0.9767318878900053,
+        "f1-score": 0.976731861862139,
+        "support": 3782.0
+      },
+      "weighted avg": {
+        "precision": 0.9767340209991149,
+        "recall": 0.9767318878900053,
+        "f1-score": 0.9767318618621389,
+        "support": 3782.0
+      }
+    }
+  },
+  "checkpoint_sha256": "50f7184c65f4e66ebabdca78004092ce7ae79b14c787d9d618e9dd1d004c994a",
+  "predictions_sha256": "cbb590b7698b7624463102b7b9ad56d208a71b29b7674e91ac06014b94cab23a"
+}

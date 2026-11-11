@@ -1,0 +1,139 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn06",
+  "fold": 2,
+  "seed": 44,
+  "best_epoch": 6,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.251192459863145,
+      "train_accuracy": 0.8883502277067724,
+      "early_stopping_loss": 0.13395937570104202,
+      "early_stopping_macro_f1": 0.945750690873474
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.12298142127840463,
+      "train_accuracy": 0.9498310562656089,
+      "early_stopping_loss": 0.10242357621583731,
+      "early_stopping_macro_f1": 0.9616400774944397
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.08797961386913672,
+      "train_accuracy": 0.9653298075510504,
+      "early_stopping_loss": 0.08246435700704621,
+      "early_stopping_macro_f1": 0.9656106302998514
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.060237965343373105,
+      "train_accuracy": 0.9789187600998972,
+      "early_stopping_loss": 0.0676717865431616,
+      "early_stopping_macro_f1": 0.9742211900271431
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.04917231173120057,
+      "train_accuracy": 0.9825914499779639,
+      "early_stopping_loss": 0.07255846403800173,
+      "early_stopping_macro_f1": 0.9695871423327682
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.03808304210691064,
+      "train_accuracy": 0.9872190392243279,
+      "early_stopping_loss": 0.05389920862912344,
+      "early_stopping_macro_f1": 0.9795105832644936
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.03311698672031803,
+      "train_accuracy": 0.9894961069487292,
+      "early_stopping_loss": 0.059943603808448084,
+      "early_stopping_macro_f1": 0.9781876563165539
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.029024322849274364,
+      "train_accuracy": 0.9914059056853239,
+      "early_stopping_loss": 0.05970933032268258,
+      "early_stopping_macro_f1": 0.9742157830502431
+    }
+  ],
+  "parameter_count": 1362433,
+  "training_seconds": 100.07954159984365,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3782,
+    "benign_count": 1892,
+    "injection_count": 1890,
+    "loss": 0.05441048488095757,
+    "accuracy": 0.9825489159175039,
+    "macro_f1": 0.9825482131375993,
+    "injection_precision": 0.975991649269311,
+    "injection_recall": 0.9894179894179894,
+    "injection_f1": 0.9826589595375722,
+    "false_positive_rate": 0.024312896405919663,
+    "fpr_wilson_95": [
+      0.018277087469835383,
+      0.03227643238003233
+    ],
+    "roc_auc": 0.998220857523183,
+    "average_precision": 0.9982611598368398,
+    "true_negatives": 1846,
+    "false_positives": 46,
+    "false_negatives": 20,
+    "true_positives": 1870,
+    "confusion_matrix": [
+      [
+        1846,
+        46
+      ],
+      [
+        20,
+        1870
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.9892818863879957,
+        "recall": 0.9756871035940803,
+        "f1-score": 0.9824374667376264,
+        "support": 1892.0
+      },
+      "injection": {
+        "precision": 0.975991649269311,
+        "recall": 0.9894179894179894,
+        "f1-score": 0.9826589595375722,
+        "support": 1890.0
+      },
+      "accuracy": 0.9825489159175039,
+      "macro avg": {
+        "precision": 0.9826367678286534,
+        "recall": 0.9825525465060349,
+        "f1-score": 0.9825482131375993,
+        "support": 3782.0
+      },
+      "weighted avg": {
+        "precision": 0.9826402819050993,
+        "recall": 0.9825489159175039,
+        "f1-score": 0.9825481545726072,
+        "support": 3782.0
+      }
+    }
+  },
+  "checkpoint_sha256": "2eb11adb329fd4153d320b1d5a1ef2d254dea5d5174a7b5327634bccbdadef5f",
+  "predictions_sha256": "03a1be41c30c01e5d20218429a5ac4062269c64aac141ad82d8b8e625e012b1b"
+}

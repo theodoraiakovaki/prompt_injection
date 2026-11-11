@@ -1,0 +1,104 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn01",
+  "fold": 5,
+  "seed": 47,
+  "best_epoch": 1,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.18957968420112042,
+      "train_accuracy": 0.9178846860080794,
+      "early_stopping_loss": 0.11266492757274076,
+      "early_stopping_macro_f1": 0.9524119059351444
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.05935979592241073,
+      "train_accuracy": 0.9772309952258539,
+      "early_stopping_loss": 0.3606914884108565,
+      "early_stopping_macro_f1": 0.8980031010293144
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.03394520744688669,
+      "train_accuracy": 0.9884686008079324,
+      "early_stopping_loss": 0.17153300790107573,
+      "early_stopping_macro_f1": 0.9543492947769108
+    }
+  ],
+  "parameter_count": 1329665,
+  "training_seconds": 31.764743499923497,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3781,
+    "benign_count": 1891,
+    "injection_count": 1890,
+    "loss": 0.10200066250078706,
+    "accuracy": 0.9568897117164771,
+    "macro_f1": 0.9568895187199515,
+    "injection_precision": 0.9547130068457083,
+    "injection_recall": 0.9592592592592593,
+    "injection_f1": 0.956980733702824,
+    "false_positive_rate": 0.04547858276044421,
+    "fpr_wilson_95": [
+      0.03697370836217767,
+      0.05582638211617498
+    ],
+    "roc_auc": 0.9933919792724659,
+    "average_precision": 0.9941841667234339,
+    "true_negatives": 1805,
+    "false_positives": 86,
+    "false_negatives": 77,
+    "true_positives": 1813,
+    "confusion_matrix": [
+      [
+        1805,
+        86
+      ],
+      [
+        77,
+        1813
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.9590860786397449,
+        "recall": 0.9545214172395557,
+        "f1-score": 0.9567983037370792,
+        "support": 1891.0
+      },
+      "injection": {
+        "precision": 0.9547130068457083,
+        "recall": 0.9592592592592593,
+        "f1-score": 0.956980733702824,
+        "support": 1890.0
+      },
+      "accuracy": 0.9568897117164771,
+      "macro avg": {
+        "precision": 0.9568995427427266,
+        "recall": 0.9568903382494075,
+        "f1-score": 0.9568895187199515,
+        "support": 3781.0
+      },
+      "weighted avg": {
+        "precision": 0.9569001210383884,
+        "recall": 0.9568897117164771,
+        "f1-score": 0.9568894945953859,
+        "support": 3781.0
+      }
+    }
+  },
+  "checkpoint_sha256": "ffb087682ce9a323fa2d633a3def1bef34d7897b18bd3ebffab1afadd5a4342e",
+  "predictions_sha256": "eadac3e8d8ebdf0fa38736b1360261a6cb129f3e69af5e4deada5d8e453d8a24"
+}

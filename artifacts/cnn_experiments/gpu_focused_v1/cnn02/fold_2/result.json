@@ -1,0 +1,118 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn02",
+  "fold": 2,
+  "seed": 44,
+  "best_epoch": 3,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2188733430921077,
+      "train_accuracy": 0.9064198619068606,
+      "early_stopping_loss": 0.11985921544581159,
+      "early_stopping_macro_f1": 0.9537172992682867
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.07652561301213626,
+      "train_accuracy": 0.9750257088291465,
+      "early_stopping_loss": 0.09057957879455375,
+      "early_stopping_macro_f1": 0.9603435321253211
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.03583959180037244,
+      "train_accuracy": 0.9925077126487439,
+      "early_stopping_loss": 0.08366757781002905,
+      "early_stopping_macro_f1": 0.9629866498916615
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.015616648313710478,
+      "train_accuracy": 0.998457470251212,
+      "early_stopping_loss": 0.08455478310860787,
+      "early_stopping_macro_f1": 0.9689252464074009
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.007721675189647868,
+      "train_accuracy": 0.9994123696195093,
+      "early_stopping_loss": 0.09503583707560471,
+      "early_stopping_macro_f1": 0.9642902099002424
+    }
+  ],
+  "parameter_count": 1329665,
+  "training_seconds": 55.60821700002998,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3782,
+    "benign_count": 1892,
+    "injection_count": 1890,
+    "loss": 0.09307181738742536,
+    "accuracy": 0.965097831835008,
+    "macro_f1": 0.9650884495317378,
+    "injection_precision": 0.9498464687819856,
+    "injection_recall": 0.982010582010582,
+    "injection_f1": 0.9656607700312175,
+    "false_positive_rate": 0.05179704016913319,
+    "fpr_wilson_95": [
+      0.04268810348519648,
+      0.06272232410667888
+    ],
+    "roc_auc": 0.9958074655749074,
+    "average_precision": 0.9959798428892366,
+    "true_negatives": 1794,
+    "false_positives": 98,
+    "false_negatives": 34,
+    "true_positives": 1856,
+    "confusion_matrix": [
+      [
+        1794,
+        98
+      ],
+      [
+        34,
+        1856
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.9814004376367614,
+        "recall": 0.9482029598308668,
+        "f1-score": 0.964516129032258,
+        "support": 1892.0
+      },
+      "injection": {
+        "precision": 0.9498464687819856,
+        "recall": 0.982010582010582,
+        "f1-score": 0.9656607700312175,
+        "support": 1890.0
+      },
+      "accuracy": 0.965097831835008,
+      "macro avg": {
+        "precision": 0.9656234532093735,
+        "recall": 0.9651067709207244,
+        "f1-score": 0.9650884495317378,
+        "support": 3782.0
+      },
+      "weighted avg": {
+        "precision": 0.9656317964057921,
+        "recall": 0.965097831835008,
+        "f1-score": 0.9650881468767936,
+        "support": 3782.0
+      }
+    }
+  },
+  "checkpoint_sha256": "e42f27a7fee40092c0bb743a67965ce25c881af9bcb122588e347e245ab437ce",
+  "predictions_sha256": "13454409307383e20590a6ee1bb019a0fd9dc59f4fb14ac5870233dee23d1144"
+}

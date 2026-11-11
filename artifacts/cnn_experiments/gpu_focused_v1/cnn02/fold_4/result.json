@@ -1,0 +1,139 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "config_id": "cnn02",
+  "fold": 4,
+  "seed": 46,
+  "best_epoch": 6,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.21959420738885962,
+      "train_accuracy": 0.9065667695019832,
+      "early_stopping_loss": 0.13300463401633073,
+      "early_stopping_macro_f1": 0.9438122721285189
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.08617121654581669,
+      "train_accuracy": 0.9689290436315557,
+      "early_stopping_loss": 0.10684871368272685,
+      "early_stopping_macro_f1": 0.956366143714082
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.04221972801984046,
+      "train_accuracy": 0.989422653151168,
+      "early_stopping_loss": 0.08969089359301097,
+      "early_stopping_macro_f1": 0.9603291136585315
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.018652655330160077,
+      "train_accuracy": 0.9974291170853533,
+      "early_stopping_loss": 0.08543605900567175,
+      "early_stopping_macro_f1": 0.9629847094801223
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.01047372098150728,
+      "train_accuracy": 0.9987512854414573,
+      "early_stopping_loss": 0.08373157742081773,
+      "early_stopping_macro_f1": 0.9643085552526736
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.007195742296726686,
+      "train_accuracy": 0.9989716468341413,
+      "early_stopping_loss": 0.08055232263367773,
+      "early_stopping_macro_f1": 0.9669529434377676
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.006268460673826786,
+      "train_accuracy": 0.9990451006317027,
+      "early_stopping_loss": 0.09474153757361253,
+      "early_stopping_macro_f1": 0.9643010696308725
+    },
+    {
+      "epoch": 8,
+      "train_loss": 0.005709657769091181,
+      "train_accuracy": 0.9992654620243867,
+      "early_stopping_loss": 0.09849944281572155,
+      "early_stopping_macro_f1": 0.9656202478544336
+    }
+  ],
+  "parameter_count": 1329665,
+  "training_seconds": 88.13690990000032,
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  },
+  "metrics": {
+    "rows": 3782,
+    "benign_count": 1892,
+    "injection_count": 1890,
+    "loss": 0.08035028237693843,
+    "accuracy": 0.973030142781597,
+    "macro_f1": 0.9730298712611984,
+    "injection_precision": 0.975531914893617,
+    "injection_recall": 0.9703703703703703,
+    "injection_f1": 0.9729442970822281,
+    "false_positive_rate": 0.024312896405919663,
+    "fpr_wilson_95": [
+      0.018277087469835383,
+      0.03227643238003233
+    ],
+    "roc_auc": 0.9963348881953533,
+    "average_precision": 0.9965354579001156,
+    "true_negatives": 1846,
+    "false_positives": 46,
+    "false_negatives": 56,
+    "true_positives": 1834,
+    "confusion_matrix": [
+      [
+        1846,
+        46
+      ],
+      [
+        56,
+        1834
+      ]
+    ],
+    "classification_report": {
+      "benign": {
+        "precision": 0.9705573080967402,
+        "recall": 0.9756871035940803,
+        "f1-score": 0.9731154454401687,
+        "support": 1892.0
+      },
+      "injection": {
+        "precision": 0.975531914893617,
+        "recall": 0.9703703703703703,
+        "f1-score": 0.9729442970822281,
+        "support": 1890.0
+      },
+      "accuracy": 0.973030142781597,
+      "macro avg": {
+        "precision": 0.9730446114951786,
+        "recall": 0.9730287369822253,
+        "f1-score": 0.9730298712611984,
+        "support": 3782.0
+      },
+      "weighted avg": {
+        "precision": 0.9730432961575803,
+        "recall": 0.973030142781597,
+        "f1-score": 0.9730299165145982,
+        "support": 3782.0
+      }
+    }
+  },
+  "checkpoint_sha256": "4ea8fe4f526daed7fa3770ad8d8e552b2b7c9db9ce78bf76463cd45d7ccee1b5",
+  "predictions_sha256": "16b56de20ceeae79b4d88e5a3c3cd12cf549b5b8a6bf10a9dcc84adee1066ade"
+}

@@ -1,0 +1,76 @@
+{
+  "run_signature": "4689a3c2dc1002c85fabbde8cd6814158f207b4dff60e74121bc946b93658bd5",
+  "mode": "full",
+  "config_id": "cnn06",
+  "config": {
+    "config_id": "cnn06",
+    "name": "Kernel size 5",
+    "embedding_dim": 64,
+    "num_filters": 256,
+    "kernel_size": 5,
+    "depth": 1,
+    "dropout": 0.3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "batch_size": 32
+  },
+  "epochs": 7,
+  "fold_best_epochs": [
+    6,
+    6,
+    9,
+    9,
+    7
+  ],
+  "seed": 42,
+  "history": [
+    {
+      "epoch": 1,
+      "train_loss": 0.2288488910249151,
+      "train_accuracy": 0.8967687344650696
+    },
+    {
+      "epoch": 2,
+      "train_loss": 0.10719836578801493,
+      "train_accuracy": 0.9575863345496853
+    },
+    {
+      "epoch": 3,
+      "train_loss": 0.07664926791619484,
+      "train_accuracy": 0.9710719763075784
+    },
+    {
+      "epoch": 4,
+      "train_loss": 0.050819513402901695,
+      "train_accuracy": 0.9821249140620868
+    },
+    {
+      "epoch": 5,
+      "train_loss": 0.040164773237438715,
+      "train_accuracy": 0.9860383944153578
+    },
+    {
+      "epoch": 6,
+      "train_loss": 0.033262928233393434,
+      "train_accuracy": 0.9887884076365752
+    },
+    {
+      "epoch": 7,
+      "train_loss": 0.03206930125682949,
+      "train_accuracy": 0.9879422497223544
+    }
+  ],
+  "training_seconds": 116.8572845000308,
+  "checkpoint_sha256": "ff82130a021e61d4d84ff9328717d2c95fe336381a9d8b18d2454d0f76689085",
+  "runtime": {
+    "python": "3.14.4",
+    "torch": "2.14.0+rocm10.1.0",
+    "numpy": "2.5.4",
+    "scikit_learn": "1.9.1",
+    "device": "cuda:0",
+    "device_name": "Radeon RX 5500 XT",
+    "hip": "7.16.26385",
+    "cuda": null,
+    "cpu_threads": 4
+  }
+}

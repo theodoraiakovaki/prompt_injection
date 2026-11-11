@@ -1,0 +1,8 @@
+# Install into the chosen existing CPU or ROCm environment. Do not reinstall
+# requirements.txt here: it pins a CPU torch build separately from the AMD build.
+# torch, numpy, scikit-learn, and joblib must already exist in that environment.
+pandas>=2.2,<4
+matplotlib>=3.10,<3.11
+ipykernel>=6.29,<8
+nbformat>=5.10,<6
+nbclient>=0.10,<1

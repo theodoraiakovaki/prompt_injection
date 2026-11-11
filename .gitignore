@@ -1,0 +1,13 @@
+# Python environments and bytecode
+.venv/
+.venv-*/
+__pycache__/
+*.py[cod]
+
+# Local GPU diagnostics, downloads, and benchmark output
+/gpu_test/.uv-cache/
+/gpu_test/results/
+
+# CNN experiment outputs; notebooks and shared experiment code remain tracked.
+/artifacts/cnn_experiments/
+.ipynb_checkpoints/
