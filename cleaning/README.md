@@ -9,6 +9,6 @@ Run [promptshield_cleaning.ipynb](promptshield_cleaning.ipynb) from the reposito
 
 Both remove invalid rows, within-split exact label conflicts, exact duplicates, and exact overlap (test > validation > train). Normalized additionally removes normalized train conflicts/duplicates and train overlap with evaluation, then lowercases all splits. Its comparison key ignores case and repeated whitespace, preserving punctuation.
 
-Evaluation rows and labels match across variants; normalized uses lowercase text. In the root analysis notebook, select `Path("cleaning/data/exact")` or `Path("cleaning/data/normalized")` and retrain from scratch with the same settings. These are derived splits, separate from official-split results.
+Evaluation rows and labels match across variants; normalized uses lowercase text. The [analysis notebook](../analysis/promptshield_analysis.ipynb) loads both exports and retrains the same TF-IDF baseline on each. Set `VARIANTS` to choose which variants to compare and `PRIMARY_VARIANT` to choose detailed plots and examples. These are derived splits, separate from official-split results.
 
 Data provenance and license: [source README](../data/README.md), [Apache 2.0](../data/LICENSE). The unredacted backup in `../data/originals/` is local only and excluded from Git.
