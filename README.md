@@ -34,21 +34,51 @@ Depending on feasibility and data availability, we may extend the project in one
 
 The project aims to provide an experimental comparison of supervised and unsupervised approaches to prompt injection detection, highlighting their performance, limitations, and suitability for scenarios with limited labeled data. The optional extension may provide further insight into either attack localization or cross-lingual robustness.
 
-
 ## CNN model
 
-All CNN notebooks, shared model code, tests, and published experiment results live in
-**[cnn/](cnn/README.md)**. The shared dataset remains in `data/`.
+Run the CNN notebooks in this order. Each contains saved results you can view
+before running any cells.
 
-- **[Tuning results](cnn/cnn_tuning.ipynb)**: eight CNN configurations evaluated across five folds.
-- **[Validation analysis](cnn/cnn_analysis.ipynb)**: reference comparisons, decision thresholds, and error review.
-- **[Numerical leaderboard](cnn/artifacts/gpu_focused_v1/leaderboard.csv)**: results for all 40 fold runs.
+1. [Train the CNNs](cnn/cnn_train.ipynb) to screen configurations, confirm the
+   finalists, and save the refit models.
+2. [Evaluate the CNNs](cnn/cnn_test.ipynb) to score validation and test data,
+   inspect errors, and save the baseline test predictions.
+3. [Run the prompt-length ablation](cnn/cnn_length_ablation.ipynb) to compare
+   the text-only winner with raw and min-max scaled token counts.
 
-The selected `cnn06` model achieved **98.03% mean fold macro F1** and **97.80%
-validation injection F1 at threshold 0.5**. Its checkpoint and saved notebook outputs
-are included, so the team can view the outcome without rerunning training.
-Test evaluation of the selected checkpoint is pending.
+### Environment
 
-See [cnn/README.md](cnn/README.md) for settings, dependency installation, model
-loading, and verification. The separate data-cleaning workflow is in
-[cleaning/](cleaning/README.md).
+Use Python 3.14 and select your environment as the notebook kernel in VS Code
+or Jupyter. The study used Python 3.14.4. For CPU evaluation or a smoke run,
+activate a Python environment and install both requirements files from the
+repository root.
+
+    python -m pip install -r requirements.txt -r cnn/requirements-notebooks.txt
+
+For full GPU training, install PyTorch for your GPU and driver in a separate
+environment. Install the other dependencies from `requirements.txt` and all
+dependencies from `cnn/requirements-notebooks.txt` in that environment.
+Confirm that `torch.cuda.is_available()` is true in the selected kernel.
+PyTorch uses `cuda:0` for both NVIDIA CUDA and AMD ROCm devices.
+
+### Run settings and data
+
+The first two notebooks default to `RUN_NAME = "cnn_study_v2_full_01"`.
+If you choose a different name, use it in all three notebooks. The training
+notebook uses `DEVICE_REQUEST = "cuda:0"`, and the evaluation notebook can
+run on CPU. The ablation uses the baseline run's GPU and software versions.
+
+For a quick CPU check, set `SMOKE_MODE = True` and `DEVICE_REQUEST = "cpu"`
+in the first two notebooks, and set `RUN_TEST = False` in the evaluation
+notebook. The length ablation requires a completed full study with test
+predictions.
+
+The CNN uses the published raw splits in `data/` and the matching normalized
+splits in `data/normalized/`. The saved TF-IDF comparison also reads the
+exact-deduplicated train and test splits in `cleaning/data/exact/`. The
+normalization in `data/normalized/` uses lowercase copies of published raw
+prompts and preserves the study's row order. See the
+[data provenance and license](data/README.md).
+
+The notebooks generate checkpoints and reports under `cnn/artifacts/`.
+Run training in your clone to create a manifest with your local data paths.

@@ -356,6 +356,12 @@ def score_loader(model, loader, device):
 
 
 def predict_rows(model, rows, vocabulary, config, device="cpu"):
+    if hasattr(config, "preprocessing"):
+        if __package__:
+            from .cnn_study import predict_rows as predict_study
+        else:
+            from cnn_study import predict_rows as predict_study
+        return predict_study(model, rows, vocabulary, config, device)
     return score_loader(model, make_loader(rows, vocabulary, config), resolve_device(device))
 
 
@@ -432,6 +438,12 @@ def fit_early_stopping(config, vocabulary, fit_rows, stop_rows, settings, seed, 
 
 
 def save_checkpoint(path, model, vocabulary, config, **metadata):
+    if hasattr(config, "preprocessing"):
+        if __package__:
+            from .cnn_study import save_checkpoint as save_study
+        else:
+            from cnn_study import save_checkpoint as save_study
+        return save_study(path, model, vocabulary, **metadata)
     path = Path(path)
     temporary = path.with_suffix(path.suffix + ".tmp")
     torch.save({
@@ -446,6 +458,12 @@ def save_checkpoint(path, model, vocabulary, config, **metadata):
 def load_checkpoint(path, device="cpu"):
     device = resolve_device(device)
     checkpoint = torch.load(path, map_location="cpu", weights_only=True)
+    if checkpoint.get("format") == "cnn_study.v2":
+        if __package__:
+            from .cnn_study import load_checkpoint_payload
+        else:
+            from cnn_study import load_checkpoint_payload
+        return load_checkpoint_payload(checkpoint, device)
     if checkpoint.get("format") == "cnn_experiments.v1":
         if checkpoint["preprocessing"] != PREPROCESSING:
             raise ValueError("Checkpoint preprocessing differs from the fixed experiment preprocessing")
